@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CSS — стилі для вебсторінок | Інформатика, 8 клас</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Lora:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="topbar" aria-label="Розділи">
+  <div class="topbar-in">
+    <a href="#what">Що таке CSS</a>
+    <a href="#connect">Підключення</a>
+    <a href="#syntax">Синтаксис</a>
+    <a href="#select">Селектори</a>
+    <a href="#props">Властивості</a>
+    <a href="#box">Блокова модель</a>
+    <a href="#lab">Практика</a>
+    <a href="#task">Завдання</a>
+  </div>
+</nav>
+<div class="wrap">
+<header>
+  <h1>CSS — одяг для вебсторінки</h1>
+  <p class="lead">Інформатика, 8 клас. HTML говорить, <em>що</em> є на сторінці (заголовок, абзац, картинка), а CSS — <em>як це виглядає</em>: кольори, шрифти, відступи, розташування.</p>
+</header>
+
+<section id="what">
+  <h2>Що таке CSS</h2>
+  <p><b>CSS</b> (Cascading Style Sheets — «каскадні таблиці стилів») — мова опису зовнішнього вигляду HTML-документа. Один файл стилів можна підключити до багатьох сторінок, і весь сайт отримає єдиний вигляд. Щоб змінити колір заголовків на всьому сайті, достатньо виправити одне правило.</p>
+</section>
+
+<section id="connect">
+  <h2>Три способи підключити стилі</h2>
+  <h3>1. Вбудований (атрибут style)</h3>
+  <pre>&lt;p <span class="p">style</span>="color: red;"&gt;Червоний текст&lt;/p&gt;</pre>
+  <h3>2. Внутрішній (тег style у head)</h3>
+  <pre>&lt;head&gt;
+  &lt;style&gt;
+    p { color: blue; }
+  &lt;/style&gt;
+&lt;/head&gt;</pre>
+  <h3>3. Зовнішній (окремий файл .css) — найкращий</h3>
+  <pre>&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</pre>
+  <p>Зовнішній файл зручний: стилі окремо від розмітки, один файл — для всього сайту.</p>
+</section>
+
+<section id="syntax">
+  <h2>Синтаксис правила</h2>
+<pre><span class="p">h1</span> {                 <span class="c">/* селектор: до чого застосувати */</span>
+  <span class="p">color</span>: darkblue;      <span class="c">/* властивість: значення; */</span>
+  <span class="p">font-size</span>: 32px;
+}</pre>
+  <p>Правило складається із <b>селектора</b> та <b>блоку оголошень</b> у фігурних дужках. Кожне оголошення — це пара «властивість: значення» і закінчується крапкою з комою.</p>
+</section>
+
+<section id="select">
+  <h2>Селектори</h2>
+  <div class="tbl"><table>
+    <tr><th>Тип</th><th>Приклад</th><th>Кого обирає</th></tr>
+    <tr><td>Тег</td><td><code>p</code></td><td>усі абзаци</td></tr>
+    <tr><td>Клас</td><td><code>.note</code></td><td>елементи з class="note"</td></tr>
+    <tr><td>Ідентифікатор</td><td><code>#menu</code></td><td>один елемент з id="menu"</td></tr>
+    <tr><td>Групування</td><td><code>h1, h2</code></td><td>і h1, і h2</td></tr>
+    <tr><td>Вкладений</td><td><code>nav a</code></td><td>посилання всередині nav</td></tr>
+  </table></div>
+  <pre>&lt;p class="note"&gt;Важливо!&lt;/p&gt;
+
+.note { background: yellow; }</pre>
+  <p>Клас можна використати багато разів, а <code>id</code> — лише один раз на сторінці.</p>
+</section>
+
+<section id="props">
+  <h2>Основні властивості</h2>
+  <div class="tbl"><table>
+    <tr><th>Властивість</th><th>Що робить</th><th>Приклад</th></tr>
+    <tr><td><code>color</code></td><td>колір тексту</td><td><code>color: #1b2f6b;</code></td></tr>
+    <tr><td><code>background-color</code></td><td>колір фону</td><td><code>background-color: lightyellow;</code></td></tr>
+    <tr><td><code>font-family</code></td><td>шрифт</td><td><code>font-family: Arial, sans-serif;</code></td></tr>
+    <tr><td><code>font-size</code></td><td>розмір шрифту</td><td><code>font-size: 18px;</code></td></tr>
+    <tr><td><code>font-weight</code></td><td>жирність</td><td><code>font-weight: bold;</code></td></tr>
+    <tr><td><code>text-align</code></td><td>вирівнювання тексту</td><td><code>text-align: center;</code></td></tr>
+    <tr><td><code>border</code></td><td>рамка</td><td><code>border: 2px solid red;</code></td></tr>
+  </table></div>
+  <p>Кольори задають назвою (<code>red</code>), шістнадцятковим кодом (<code>#ff0000</code>) або через <code>rgb(255, 0, 0)</code>.</p>
+</section>
+
+<section id="box">
+  <h2>Блокова модель</h2>
+  <p>Кожен елемент — це прямокутна коробка з чотирьох шарів, від центру назовні:</p>
+  <div class="box">
+    <h3>content → padding → border → margin</h3>
+    <p><b>content</b> — сам вміст; <b>padding</b> — внутрішній відступ між вмістом і рамкою; <b>border</b> — рамка; <b>margin</b> — зовнішній відступ від сусідніх елементів.</p>
+  </div>
+<pre>.card {
+  padding: 16px;
+  border: 2px solid navy;
+  margin: 20px;
+}</pre>
+</section>
+
+<section id="lab">
+  <h2>Практика: змінюй стилі наживо</h2>
+  <p>Рухай повзунки й обирай кольори — код унизу оновлюється сам. Скопіюй його у свій файл <code>style.css</code>.</p>
+  <div class="lab">
+    <label>Колір тексту <input type="color" id="i-color" value="#1b2f6b"></label>
+    <label>Колір фону <input type="color" id="i-bg" value="#ffe97a"></label>
+    <label>Розмір шрифту: <span id="v-fs">24</span>px <input type="range" id="i-fs" min="12" max="48" value="24"></label>
+    <label>Внутрішній відступ: <span id="v-pad">16</span>px <input type="range" id="i-pad" min="0" max="48" value="16"></label>
+    <label>Заокруглення: <span id="v-r">8</span>px <input type="range" id="i-r" min="0" max="50" value="8"></label>
+    <label>Товщина рамки: <span id="v-b">2</span>px <input type="range" id="i-b" min="0" max="10" value="2"></label>
+    <div id="demo">Привіт, CSS!</div>
+    <pre id="out"></pre>
+  </div>
+</section>
+
+<section id="task">
+  <h2>Завдання для закріплення</h2>
+  <ol class="task">
+    <li>Створи файли <code>index.html</code> і <code>style.css</code> та підключи стилі тегом <code>link</code>.</li>
+    <li>Зроби сторінку «Моя візитівка»: заголовок, фото, кілька абзаців про себе.</li>
+    <li>Заголовку задай колір і вирівнювання по центру; абзацам — шрифт і розмір.</li>
+    <li>Створи клас <code>.hobby</code> з рамкою та фоном і застосуй до двох абзаців.</li>
+    <li>Додай блоку відступи <code>padding</code> і <code>margin</code>.</li>
+  </ol>
+  <h3>Запитання для самоперевірки</h3>
+  <ul>
+    <li>Для чого потрібен CSS і чим він відрізняється від HTML?</li>
+    <li>Які є способи підключення стилів? Який найзручніший і чому?</li>
+    <li>З яких частин складається правило CSS?</li>
+    <li>Чим клас відрізняється від ідентифікатора?</li>
+    <li>Чим padding відрізняється від margin?</li>
+  </ul>
+  <button id="theme" type="button">Змінити тему: світла / темна</button>
+</section>
+
+<footer>Інформатика, 8 клас · Тема: «Каскадні таблиці стилів (CSS)»</footer>
+</div>
+
+<script>
+(function(){
+  var ids=['color','bg','fs','pad','r','b'], el={};
+  ids.forEach(function(k){el[k]=document.getElementById('i-'+k)});
+  var demo=document.getElementById('demo'), out=document.getElementById('out');
+  function upd(){
+    var c=el.color.value,bg=el.bg.value,fs=el.fs.value,p=el.pad.value,r=el.r.value,b=el.b.value;
+    demo.style.cssText='color:'+c+';background-color:'+bg+';font-size:'+fs+'px;padding:'+p+'px;border-radius:'+r+'px;border:'+b+'px solid '+c;
+    document.getElementById('v-fs').textContent=fs;
+    document.getElementById('v-pad').textContent=p;
+    document.getElementById('v-r').textContent=r;
+    document.getElementById('v-b').textContent=b;
+    out.textContent='.card {\n  color: '+c+';\n  background-color: '+bg+';\n  font-size: '+fs+'px;\n  padding: '+p+'px;\n  border: '+b+'px solid '+c+';\n  border-radius: '+r+'px;\n}';
+  }
+  ids.forEach(function(k){el[k].addEventListener('input',upd)});
+  upd();
+  var root=document.documentElement;
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(root.getAttribute('data-theme')!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme',dark?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
